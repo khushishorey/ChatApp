@@ -7,7 +7,8 @@ dotenv.config()
 connectDB()
 
 const app = express()
-app.use("api/auth", authRoute)
+app.use(express.json())
+app.use("/api/auth", authRoute)
 
 const PORT = process.env.PORT || 5001;
 
