@@ -27,7 +27,7 @@ export const signup = async (req,res) => {
 
         res.status(201).json({message: "User registered successfully"})
         
-    }catch (error) {
+    } catch (error) {
     console.error("SIGNUP ERROR 👉", error);
     return res.status(500).json({ message: error.message });
     }
@@ -66,5 +66,12 @@ export const login = async (req,res) => {
 }
 
 export const logout = async (req,res) => {
-    res.send("Signup Page")
+    try {
+        res.cookie("token", "", {maxAge:0})
+        res.status(201).json({message: "Logged Out Successfully"})
+        
+    } catch (error) {
+    console.error("LOGOUT ERROR 👉", error);
+    return res.status(500).json({ message: error.message });
+    }
 }
